@@ -18,6 +18,14 @@ export default class seleniumInstagram {
             },interval)
         })
     }
+    async Comment(comentario = "") {
+        var textarea = await this.driver.findElement(By.tagName("textarea"))
+        await textarea.click()
+        await this.driver.findElement(By.tagName("textarea")).sendKeys(comentario)
+        await this.sleep(1000)
+        await this.driver.findElement(By.xpath("//button[contains(text(),'Publicar')]")).click()
+            
+    }
     async login(timeawait = 5000){
         await this.driver.get("https://www.instagram.com/accounts/login").then(async ()=> {
             setTimeout( async () => {
